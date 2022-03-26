@@ -1,7 +1,4 @@
-interface ITodoItem {
-  todo: any;
-  isDone?: boolean;
-}
+import ITodoItem from "../../types/ITodoItem";
 
 /**
  * The todo item component.
@@ -10,8 +7,11 @@ interface ITodoItem {
  * @param props
  * @returns
  */
-const TodoItem = ({ todo, isDone = false }: ITodoItem) => {
-  return null;
-};
+const TodoItem = ({ key, todo, isDone = false }: ITodoItem) => (
+  <div>
+    <input type="checkbox" id={key} name={key} defaultChecked={isDone} />
+    <label htmlFor={key}>{todo}</label>
+  </div>
+);
 
 export default TodoItem;
