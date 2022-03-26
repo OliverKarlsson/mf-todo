@@ -1,7 +1,5 @@
-interface ITodoListProps {
-  yetTodos?: any[];
-  doneTodos?: any[];
-}
+import ITodoListProps from "../../types/ITodoListProps";
+
 /**
  * The main todo component.
  * @param props

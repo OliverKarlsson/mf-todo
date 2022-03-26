@@ -1,10 +1,12 @@
+import ITodoContainer from "../types/ITodoContainer";
+
 /**
  * Generates a string representing the markdown from the given todos.
  * @param yetTodos todos yet to be completed
  * @param doneTodos todos that have been completed
  * @returns
  */
-const generateTodo = (yetTodos: any[] = [], doneTodos: any[] = []) => {
+const generateTodo = ({ yetTodos = [], doneTodos = [] }: ITodoContainer) => {
   return `
     - [ ] yet todo 1
     - [ ] yet todo 2
