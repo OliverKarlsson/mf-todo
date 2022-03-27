@@ -1,6 +1,7 @@
 import ITodoListProps from "../../types/ITodoListProps";
 import TodoItem from "../TodoItem.tsx/TodoItem";
 import useTodoList from "./useTodoList/useTodoList";
+import style from "./TodoList.module.scss";
 
 /**
  * The main todo component.
@@ -11,7 +12,7 @@ const TodoList = ({ yetTodos = [], doneTodos = [] }: ITodoListProps) => {
   const yetTodo = useTodoList(yetTodos);
   const doneTodo = useTodoList(doneTodos);
   return (
-    <>
+    <div className={style.todoList}>
       {yetTodo.todos.map(({ key, todo }) => (
         <TodoItem
           key={key}
@@ -33,7 +34,7 @@ const TodoList = ({ yetTodos = [], doneTodos = [] }: ITodoListProps) => {
           isDone
         />
       ))}
-    </>
+    </div>
   );
 };
 
