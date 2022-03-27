@@ -13,7 +13,7 @@ const TodoList = ({ yetTodos = [], doneTodos = [] }: ITodoListProps) => {
   const doneTodo = useTodoList(doneTodos);
   return (
     <div>
-      <ListMenu />
+      <ListMenu yetTodo={yetTodo} doneTodo={doneTodo} />
       <TodosRegion
         todos={yetTodo.todos}
         onItemToggle={(itemTodo) => {

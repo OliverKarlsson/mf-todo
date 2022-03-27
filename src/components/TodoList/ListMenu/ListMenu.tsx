@@ -1,11 +1,14 @@
 import { useState } from "react";
 import generateTodo from "../../../generateTodo/generateTodo";
-import ITodoContainer from "../../../types/ITodoContainer";
+import ITodoList from "../../../types/ITodoList";
 import style from "./ListMenu.module.scss";
 
-interface IListMenuProps extends ITodoContainer {}
+interface IListMenuProps {
+  yetTodo: ITodoList;
+  doneTodo: ITodoList;
+}
 
-const ListMenu = (props: IListMenuProps) => {
+const ListMenu = ({ yetTodo, doneTodo }: IListMenuProps) => {
   const [didCopy, setDidCopy] = useState(false);
   return (
     <div className={style.listMenu}>
@@ -17,7 +20,10 @@ const ListMenu = (props: IListMenuProps) => {
         title="Copy todos to clipboard"
         onClick={() => {
           setDidCopy(true);
-          const todosMarkdown = generateTodo(props);
+          const yetTodos = yetTodo.todos.map(({ todo }) => todo);
+          const doneTodos = doneTodo.todos.map(({ todo }) => todo);
+          const todosMarkdown = generateTodo({ yetTodos, doneTodos });
+
           navigator.clipboard.writeText(todosMarkdown);
           setTimeout(() => {
             setDidCopy(false);
