@@ -1,27 +1,27 @@
 import { useCallback, useState } from "react";
-import ITodoItemProps from "../../../types/ITodoItemProps";
+import ITodoItem from "../../../types/ITodoItem";
+import ITodoList from "../../../types/ITodoList";
 import Todo from "../../../types/Todo";
 import makeKey from "./makeKey";
 
-type TodoItem = Omit<ITodoItemProps, "onToggle">;
-
 const useTodoList = (initialTodos: Todo[]) => {
-  const [todos, setTodos] = useState<TodoItem[]>(
+  const [todos, setTodos] = useState<ITodoItem[]>(
     initialTodos.map((todo) => ({ key: makeKey(), todo }))
   );
   const addTodo = useCallback(
-    (todo: TodoItem) => {
+    (todo: ITodoItem) => {
       setTodos([todo, ...todos]);
     },
     [todos, setTodos]
   );
   const removeTodo = useCallback(
-    (todo: TodoItem) => {
+    (todo: ITodoItem) => {
       setTodos(todos.filter(({ key }) => key !== todo.key));
     },
     [todos, setTodos]
   );
-  return { todos, addTodo, removeTodo };
+  const response: ITodoList = { todos, addTodo, removeTodo };
+  return response;
 };
 
 export default useTodoList;
