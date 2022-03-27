@@ -7,12 +7,15 @@ import ITodoContainer from "../types/ITodoContainer";
  * @returns
  */
 const generateTodo = ({ yetTodos = [], doneTodos = [] }: ITodoContainer) => {
-  return `
-    - [ ] yet todo 1
-    - [ ] yet todo 2
-    - [x] done todo 1
-    - [x] done todo 2
-    `;
+  let markdown = "\n";
+  yetTodos.forEach((todo) => {
+    markdown += `- [ ] ${todo}\n`;
+  });
+  doneTodos.forEach((todo) => {
+    markdown += `- [x] ${todo}\n`;
+  });
+  markdown += "\n";
+  return markdown;
 };
 
 export default generateTodo;
