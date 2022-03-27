@@ -1,4 +1,4 @@
-import ITodoItem from "../../types/ITodoItem";
+import ITodoItemProps from "../../types/ITodoItemProps";
 import style from "./TodoItem.module.scss";
 
 /**
@@ -8,7 +8,7 @@ import style from "./TodoItem.module.scss";
  * @param props
  * @returns
  */
-const TodoItem = ({ key, todo, isDone = false, onToggle }: ITodoItem) => (
+const TodoItem = ({ key, todo, isDone = false, onToggle }: ITodoItemProps) => (
   <div className={style.todoItem}>
     <div
       className={style.todoItem__innerBox}
