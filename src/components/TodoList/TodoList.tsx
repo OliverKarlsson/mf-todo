@@ -1,6 +1,7 @@
 import ITodoListProps from "../../types/ITodoListProps";
 import useTodoList from "./useTodoList/useTodoList";
 import TodosRegion from "./TodosRegion/TodosRegion";
+import ListMenu from "./ListMenu/ListMenu";
 
 /**
  * The main todo component.
@@ -12,6 +13,7 @@ const TodoList = ({ yetTodos = [], doneTodos = [] }: ITodoListProps) => {
   const doneTodo = useTodoList(doneTodos);
   return (
     <div>
+      <ListMenu />
       <TodosRegion
         todos={yetTodo.todos}
         onItemToggle={(itemTodo) => {
