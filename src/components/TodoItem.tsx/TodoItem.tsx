@@ -7,10 +7,21 @@ import ITodoItem from "../../types/ITodoItem";
  * @param props
  * @returns
  */
-const TodoItem = ({ key, todo, isDone = false }: ITodoItem) => (
+const TodoItem = ({ key, todo, isDone = false, onToggle }: ITodoItem) => (
   <div>
-    <input type="checkbox" id={key} name={key} defaultChecked={isDone} />
-    <label htmlFor={key}>{todo}</label>
+    <div
+      role="checkbox"
+      aria-checked={isDone}
+      onClick={onToggle}
+      onKeyUp={(e) => {
+        if (e.code === "Enter") {
+          onToggle();
+        }
+      }}
+    >
+      <input type="checkbox" id={key} name={key} checked={isDone} />
+      <label htmlFor={key}>{todo}</label>
+    </div>
   </div>
 );
 
