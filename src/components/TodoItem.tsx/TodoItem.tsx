@@ -1,4 +1,5 @@
 import ITodoItem from "../../types/ITodoItem";
+import style from "./TodoItem.module.scss";
 
 /**
  * The todo item component.
@@ -8,8 +9,9 @@ import ITodoItem from "../../types/ITodoItem";
  * @returns
  */
 const TodoItem = ({ key, todo, isDone = false, onToggle }: ITodoItem) => (
-  <div>
+  <div className={style.todoItem}>
     <div
+      className={style.todoItem__innerBox}
       role="checkbox"
       aria-checked={isDone}
       onClick={onToggle}
